@@ -2,6 +2,9 @@
 
 A lightweight interactive dashboard to evaluate and compare two classic trading strategies using historical market data.
 
+## 🚀 Live Demo
+You can access the live application here: [https://wahyeung-strategy-comparator-app-yu0ig7.streamlit.app/](https://wahyeung-strategy-comparator-app-yu0ig7.streamlit.app/)
+
 ## 🛠 Features
 - **SMA Crossover Strategy:** Compare Fast and Slow Simple Moving Averages.
 - **RSI Momentum Strategy:** Test Overbought/Oversold thresholds.
