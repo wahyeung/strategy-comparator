@@ -59,7 +59,7 @@ if not data.empty:
     data.loc[data['RSI'] < rsi_oversold, 'RSI_Signal'] = 1
     data.loc[data['RSI'] > rsi_overbought, 'RSI_Signal'] = -1
     # Forward fill signals to maintain position
-    data['RSI_Signal'] = data['RSI_Signal'].replace(0, method='ffill')
+    data['RSI_Signal'] = data['RSI_Signal'].replace(0, pd.NA).ffill().fillna(0)
     # Calculate daily strategy returns
     data['RSI_Returns'] = data['RSI_Signal'].shift(1) * data['Close'].pct_change()
     # Calculate cumulative returns
