@@ -9,7 +9,7 @@ st.set_page_config(page_title="Strategy Comparator", layout="wide")
 
 # Sidebar for user inputs
 st.sidebar.header("Configuration")
-ticker = st.sidebar.text_input("Enter Ticker", value="AAPL")
+ticker = st.sidebar.text_input("Enter Ticker", value="AAPL").upper()
 start_date = st.sidebar.date_input("Start Date", value=pd.to_datetime("2023-01-01"))
 
 st.sidebar.subheader("SMA Strategy Params")
@@ -25,6 +25,8 @@ rsi_oversold = st.sidebar.slider("Oversold", 10, 50, 30)
 @st.cache_data
 def load_data(symbol, start):
     # Fetch data using yfinance
+    if not symbol:
+        return pd.DataFrame()
     df = yf.download(symbol, start=start)
     if isinstance(df.columns, pd.MultiIndex):
         df.columns = df.columns.get_level_values(0)
